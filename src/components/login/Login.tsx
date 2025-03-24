@@ -3,12 +3,12 @@ import { Field, Form, Formik } from 'formik';
 import * as Yup from 'yup';
 
 // TODO: alias for ui directory
-import { Box, Button, Feedback } from '../../ui';
+import { Box, Button, Feedback, Input, LoginFormLayout } from '../../ui';
 import { getErrorMessage } from '../../utils/errors.ts';
 
 import { httpClient } from '../../utils/http-client.ts';
 import { ISeverResponse } from '../../types.ts';
-import { VALIDATORS } from '../../utils/user_input_validators';
+import { VALIDATORS } from '../../utils/user-input-validators';
 
 interface ICredentials {
   email: string;
@@ -63,46 +63,57 @@ export const LoginForm = ({ onForgotPasswordClick, onLoginSuccess }: ILoginFormP
       })}
       onSubmit={onSubmitCredentials}
     >
-      {({ isSubmitting, errors, setFieldValue }) => {
+      {({ values, isSubmitting, errors, setFieldValue }) => {
+        console.log('values', values);
+
         return (
           <Form>
-            <Box direction="column">
-              {error ? <Feedback type="error" text={error} /> : null}
+            <LoginFormLayout>
               <Box direction="column">
-                <Field
-                  label="Email"
-                  placeholder="Fill in here your Email"
-                  name="email"
-                  autoComplete="email"
-                  error={Boolean(errors.email)}
-                  helperText={errors.email}
-                  onChange={(event: ChangeEvent<HTMLInputElement>) => {
-                    setFieldValue('email', event.target.value);
-                  }}
-                />
-                <Field
-                  label="Password"
-                  type={showPassword ? 'text' : 'password'}
-                  name="password"
-                  autoComplete="current-password"
-                  error={Boolean(errors.password)}
-                  helperText={errors.password}
-                  onChange={(event: ChangeEvent<HTMLInputElement>) => {
-                    // setFieldValue('autofill', false);
-                    setFieldValue('password', event.target.value);
-                  }}
-                />
-                <Button onClick={togglePasswordVisibility}>{showPassword ? '🐵' : '🙈'}</Button>
+                {error ? <Feedback type="error" text={error} /> : null}
+                <Box direction="column">
+                  <Box>
+                    <Field
+                      label="Email"
+                      placeholder="Email"
+                      name="email"
+                      as={Input}
+                      autoComplete="email"
+                      error={Boolean(errors.email)}
+                      helperText={errors.email}
+                      onChange={(event: ChangeEvent<HTMLInputElement>) => {
+                        setFieldValue('email', event.target.value);
+                      }}
+                    />
+                  </Box>
+                  <Box direction="row">
+                    <Field
+                      label="Password"
+                      placeholder="Password"
+                      type={showPassword ? 'text' : 'password'}
+                      name="password"
+                      as={Input}
+                      autoComplete="current-password"
+                      error={Boolean(errors.password)}
+                      helperText={errors.password}
+                      onChange={(event: ChangeEvent<HTMLInputElement>) => {
+                        // setFieldValue('autofill', false);
+                        setFieldValue('password', event.target.value);
+                      }}
+                    />
+                    <Button onClick={togglePasswordVisibility}>{showPassword ? '🐵' : '🙈'}</Button>
+                  </Box>
+                </Box>
+                <Box>
+                  <Button onClick={onForgotPasswordClick}>I forgot my password</Button>
+                </Box>
+                <Box>
+                  <Button type="submit" loading={isSubmitting || isLoading} disabled={isLoading}>
+                    Login
+                  </Button>
+                </Box>
               </Box>
-              <Box>
-                <Button onClick={onForgotPasswordClick}>I forgot my password</Button>
-              </Box>
-              <Box>
-                <Button type="submit" loading={isSubmitting || isLoading} disabled={isLoading}>
-                  Login
-                </Button>
-              </Box>
-            </Box>
+            </LoginFormLayout>
           </Form>
         );
       }}

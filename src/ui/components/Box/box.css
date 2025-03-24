@@ -1,11 +1,11 @@
 .box-vertical {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: var(--gap);
 }
 
 .box-horizontal {
   display: flex;
   flex-direction: row;
-  gap: 2rem;
+  gap: var(--gap);
 }
