@@ -34,6 +34,7 @@ export const InputHelperText = ({ text, variant }: IInputHelperText) => {
 interface IInputProps {
   value: string;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  name: string;
   placeholder: string;
   helperText?: string;
   error?: boolean;
@@ -41,9 +42,7 @@ interface IInputProps {
   disabled?: boolean;
 }
 
-export const Input = ({ value, onChange, type, placeholder, disabled, helperText, error }: IInputProps) => {
-  // console.log('input', { value, onChange, type, placeholder, disabled, helperText, error });
-
+export const Input = ({ value, onChange, name, type, placeholder, disabled, helperText, error }: IInputProps) => {
   const getHelperTextVariant = (): DataVisualizationVariantsT => {
     if (error) {
       return 'error';
@@ -61,6 +60,7 @@ export const Input = ({ value, onChange, type, placeholder, disabled, helperText
         type={type}
         value={value}
         onChange={onChangeInput}
+        name={name}
         disabled={Boolean(disabled)}
         placeholder={placeholder}
       />

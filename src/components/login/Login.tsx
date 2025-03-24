@@ -1,5 +1,5 @@
-import { ChangeEvent, useState } from 'react';
-import { Field, Form, Formik } from 'formik';
+import { ReactNode, useState } from 'react';
+import { Field, Form, Formik, FormikProps } from 'formik';
 import * as Yup from 'yup';
 
 // TODO: alias for ui directory
@@ -9,11 +9,6 @@ import { getErrorMessage } from '../../utils/errors.ts';
 import { httpClient } from '../../utils/http-client.ts';
 import { ISeverResponse } from '../../types.ts';
 import { VALIDATORS } from '../../utils/user-input-validators';
-
-const INITIAL_VALUES: ICredentials = {
-  email: '',
-  password: '',
-};
 
 interface ICredentials {
   email: string;
@@ -30,13 +25,6 @@ export const LoginForm = ({ onForgotPasswordClick, onLoginSuccess, onSignUpClick
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string>('');
   const [showPassword, setShowPassword] = useState(false);
-
-  // const formik = useFormik<ICredentials>({
-  //   initialValues: INITIAL_VALUES,
-  //   onSubmit: async (values) => {
-  //     await onSubmitCredentials(values);
-  //   },
-  // });
 
   const togglePasswordVisibility = () => {
     setShowPassword((shown) => !shown);
@@ -57,7 +45,6 @@ export const LoginForm = ({ onForgotPasswordClick, onLoginSuccess, onSignUpClick
     } catch (e: unknown) {
       const errorMessage = getErrorMessage(e, 'Something went wrong while login credentials submit');
       setError(errorMessage);
-      console.log('error', errorMessage, e);
     } finally {
       setIsLoading(false);
     }
@@ -68,15 +55,18 @@ export const LoginForm = ({ onForgotPasswordClick, onLoginSuccess, onSignUpClick
       key="login-form"
       validateOnChange={false}
       validateOnBlur={false}
-      initialValues={INITIAL_VALUES}
+      initialValues={{
+        email: '',
+        password: '',
+      }}
       validationSchema={Yup.object({
         email: VALIDATORS.email,
         password: VALIDATORS.password,
       })}
       onSubmit={onSubmitCredentials}
     >
-      {({ isSubmitting, errors, setFieldValue }) => {
-        return (
+      {({ values, errors, handleChange, isSubmitting }: FormikProps<ICredentials>) =>
+        (
           <Form>
             <LoginFormLayout>
               <Box slotName="hey" style={{ justifyContent: 'end' }}>
@@ -88,31 +78,30 @@ export const LoginForm = ({ onForgotPasswordClick, onLoginSuccess, onSignUpClick
 
               <Box slotName="email">
                 <Field
+                  value={values.email}
+                  onChange={handleChange}
+                  name="email"
                   label="Email"
                   placeholder="Email"
-                  name="email"
                   as={Input}
                   autoComplete="email"
                   error={Boolean(errors.email)}
                   helperText={errors.email}
-                  onChange={(event: ChangeEvent<HTMLInputElement>) => {
-                    setFieldValue('email', event.target.value);
-                  }}
                 />
               </Box>
 
               <Box slotName="password">
                 <Field
+                  value={values.password}
+                  onChange={handleChange}
+                  name="password"
                   label="Password"
                   placeholder="Password"
+                  autoComplete="current-password"
                   type={showPassword ? 'text' : 'password'}
-                  name="password"
                   as={Input}
                   error={Boolean(errors.password)}
                   helperText={errors.password}
-                  onChange={(event: ChangeEvent<HTMLInputElement>) => {
-                    setFieldValue('password', event.target.value);
-                  }}
                 />
               </Box>
               <Box slotName="spy" style={{ height: '3rem' }}>
@@ -140,8 +129,8 @@ export const LoginForm = ({ onForgotPasswordClick, onLoginSuccess, onSignUpClick
               </Box>
             </LoginFormLayout>
           </Form>
-        );
-      }}
+        ) as ReactNode
+      }
     </Formik>
   );
 };
