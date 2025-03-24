@@ -26,7 +26,10 @@ export const Box = ({ children, direction, gap = 0, slotName, style = {} }: IBox
   };
 
   return (
-    <div className={getClassName()} style={{ '--gap': `${gap}rem`, '--slot-name': slotName, ...style }}>
+    <div
+      className={getClassName()}
+      style={{ '--gap': `${gap}rem`, '--slot-name': slotName, ...style } as CSSProperties}
+    >
       {children}
     </div>
   );

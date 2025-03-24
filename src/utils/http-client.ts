@@ -13,6 +13,7 @@ const API_URL = 'https://be-autocomplete.vercel.app';
 export function httpClient<B, R>(url: string, options?: IHttpClientOptions<B>): Promise<R> {
   return fetch(`${API_URL}${url}`, { method: options?.method || 'get', body: JSON.stringify(options?.body) }).then(
     (response) => {
+      console.log('response', response);
       if (!response.ok) {
         // TODO: better error handling
         throw new Error(response.statusText);

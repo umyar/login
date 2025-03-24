@@ -16,6 +16,7 @@ Quite a lot is not done yet... 😨
 
 - [ ] Responsive layout + mobile devices test (WIP)
 - [ ] Feedback component implementation (server response)
+- [ ] Correct error messages handling (server response)
 - [ ] Decent disabled state for buttons and inputs...
 - [ ] Flexbox stuff from style to CSS (`justify-content,` `align-items`...)
 - [ ] Animations for the buttons loading state
