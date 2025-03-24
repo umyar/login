@@ -10,7 +10,10 @@ export interface IReactChildrenBase {
 // TODO: overloaded button props (submit -> w/o onClick)
 export interface ICommonButtonProps extends IReactChildrenBase {
   type?: 'submit' | 'reset' | 'button';
+  variant: 'primary' | 'outline' | 'secondary';
   disabled?: boolean;
   onClick: () => void;
   loading?: boolean;
 }
+
+export type DataVisualizationVariantsT = 'success' | 'error' | 'warning' | 'info';

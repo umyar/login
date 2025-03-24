@@ -1,0 +1,31 @@
+button.secondary {
+  border: 1px solid transparent;
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+button.secondary:hover {
+  border-color: #646cff;
+}
+
+button.secondary:focus,
+button.secondary:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(100, 108, 255, 0.5);
+}
+
+@media (prefers-color-scheme: light) {
+  button.secondary {
+    background-color: #f9f9f9;
+    color: #213547;
+  }
+
+  button.secondary:hover {
+    border-color: #646cff;
+  }
+
+  button.secondary:focus,
+  button.secondary:focus-visible {
+    box-shadow: 0 0 0 4px rgba(100, 108, 255, 0.5);
+  }
+}

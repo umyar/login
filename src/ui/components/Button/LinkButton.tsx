@@ -1,6 +1,6 @@
 import { ICommonButtonProps } from '../../types.ts';
 
-import '../../ui.css';
+import './link.css';
 
 export const LinkButton = ({ children, onClick }: ICommonButtonProps) => {
   return (

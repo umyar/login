@@ -1,12 +1,14 @@
+import { DataVisualizationVariantsT } from '../../types.ts';
+
 import './feedback.css';
 
 interface IFeedbackProps {
-  type: 'success' | 'error' | 'warning' | 'info';
+  variant: DataVisualizationVariantsT;
   text: string;
 }
 
-export const Feedback = ({ type, text }: IFeedbackProps) => {
-  const getIcon = (type: IFeedbackProps['type']) => {
+export const Feedback = ({ variant, text }: IFeedbackProps) => {
+  const getIcon = (type: IFeedbackProps['variant']) => {
     switch (type) {
       case 'success':
         return '✅';
@@ -21,7 +23,7 @@ export const Feedback = ({ type, text }: IFeedbackProps) => {
 
   return (
     <div className="feedback">
-      <div>{getIcon(type)}</div>
+      <div>{getIcon(variant)}</div>
       <div>{text}</div>
     </div>
   );

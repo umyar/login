@@ -1,11 +1,15 @@
 .box-vertical {
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: var(--gap);
+  grid-area: var(--slot-name);
 }
 
 .box-horizontal {
+  width: 100%;
   display: flex;
   flex-direction: row;
   gap: var(--gap);
+  grid-area: var(--slot-name);
 }

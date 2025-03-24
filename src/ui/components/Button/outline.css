@@ -1,0 +1,37 @@
+button.outline {
+  border: 1px solid #1a1a1a;
+  background-color: transparent;
+  color: #1a1a1a;
+  transition:
+    background-color 0.25s,
+    color 0.25s,
+    border-color 0.25s;
+}
+
+button.outline:hover {
+  background-color: #e0e0e0;
+  color: #1a1a1a;
+}
+
+button.outline:focus,
+button.outline:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(100, 108, 255, 0.5);
+}
+
+@media (prefers-color-scheme: light) {
+  button.outline {
+    border-color: #f9f9f9;
+    color: #213547;
+  }
+
+  button.outline:hover {
+    background-color: #f0f0f0;
+    color: #213547;
+  }
+
+  button.outline:focus,
+  button.outline:focus-visible {
+    box-shadow: 0 0 0 4px rgba(116, 123, 255, 0.5);
+  }
+}

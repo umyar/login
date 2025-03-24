@@ -1,7 +1,35 @@
 import { ChangeEvent } from 'react';
 
-import './input.css';
+import { DataVisualizationVariantsT } from '../../types.ts';
 import { Box } from '../Box/Box.tsx';
+
+import './input.css';
+
+interface IInputHelperText {
+  text: string;
+  variant: DataVisualizationVariantsT;
+}
+
+export const InputHelperText = ({ text, variant }: IInputHelperText) => {
+  const getTipClassName = (variant: IInputHelperText['variant']) => {
+    switch (variant) {
+      case 'success':
+        return 'input-helper-success';
+      case 'error':
+        return 'input-helper-error';
+      case 'warning':
+        return 'input-helper-warning';
+      default:
+        return 'input-helper-info';
+    }
+  };
+
+  return (
+    <Box direction="row" style={{ marginLeft: '1rem' }}>
+      <span className={getTipClassName(variant)}>{text}</span>
+    </Box>
+  );
+};
 
 interface IInputProps {
   value: string;
@@ -14,14 +42,13 @@ interface IInputProps {
 }
 
 export const Input = ({ value, onChange, type, placeholder, disabled, helperText, error }: IInputProps) => {
-  console.log('input', { value, onChange, type, placeholder, disabled, helperText, error });
+  // console.log('input', { value, onChange, type, placeholder, disabled, helperText, error });
 
-  const getTipClassName = (error: IInputProps['error']) => {
+  const getHelperTextVariant = (): DataVisualizationVariantsT => {
     if (error) {
-      return 'input-helper-error';
+      return 'error';
     }
-
-    return 'input-helper-info';
+    return 'info';
   };
 
   const onChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
@@ -29,7 +56,7 @@ export const Input = ({ value, onChange, type, placeholder, disabled, helperText
   };
 
   return (
-    <Box direction="column">
+    <Box direction="column" gap={0.5}>
       <input
         type={type}
         value={value}
@@ -38,7 +65,7 @@ export const Input = ({ value, onChange, type, placeholder, disabled, helperText
         placeholder={placeholder}
       />
 
-      {helperText ? <span className={getTipClassName(error)}>{helperText}</span> : null}
+      <Box>{helperText ? <InputHelperText text={helperText} variant={getHelperTextVariant()} /> : null}</Box>
     </Box>
   );
 };
