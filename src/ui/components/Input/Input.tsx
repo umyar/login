@@ -1,16 +1,17 @@
 import { ChangeEvent } from 'react';
 
-import { DataVisualizationVariantsT } from '../../types.ts';
+import { DataVisualizationVariantsT, AriaRequiredAttrT } from '../../types.ts';
 import { Box } from '../Box/Box.tsx';
 
 import './input.css';
 
 interface IInputHelperText {
   text: string;
+  id: string;
   variant: DataVisualizationVariantsT;
 }
 
-export const InputHelperText = ({ text, variant }: IInputHelperText) => {
+export const InputHelperText = ({ text, variant, id }: IInputHelperText) => {
   const getTipClassName = (variant: IInputHelperText['variant']) => {
     switch (variant) {
       case 'success':
@@ -26,7 +27,9 @@ export const InputHelperText = ({ text, variant }: IInputHelperText) => {
 
   return (
     <Box direction="row" style={{ marginLeft: '1rem' }}>
-      <span className={getTipClassName(variant)}>{text}</span>
+      <span id={id} className={getTipClassName(variant)}>
+        {text}
+      </span>
     </Box>
   );
 };
@@ -38,11 +41,22 @@ interface IInputProps {
   placeholder: string;
   helperText?: string;
   error?: boolean;
+  ariaRequired?: boolean;
   type: 'text' | 'password';
   disabled?: boolean;
 }
 
-export const Input = ({ value, onChange, name, type, placeholder, disabled, helperText, error }: IInputProps) => {
+export const Input = ({
+  value,
+  onChange,
+  name,
+  type,
+  placeholder,
+  disabled,
+  helperText,
+  error,
+  ariaRequired,
+}: IInputProps) => {
   const getHelperTextVariant = (): DataVisualizationVariantsT => {
     if (error) {
       return 'error';
@@ -54,6 +68,10 @@ export const Input = ({ value, onChange, name, type, placeholder, disabled, help
     onChange(e);
   };
 
+  const ariaRequiredValue = (ariaRequired ? String(ariaRequired) : undefined) as AriaRequiredAttrT;
+  const ariaInvalid = error ? String(error) : undefined;
+  const ariaErrorAnchor = `${name}-aria-err`;
+
   return (
     <Box direction="column" gap={0.5}>
       <input
@@ -63,9 +81,16 @@ export const Input = ({ value, onChange, name, type, placeholder, disabled, help
         name={name}
         disabled={Boolean(disabled)}
         placeholder={placeholder}
+        aria-required={ariaRequiredValue}
+        aria-invalid={ariaInvalid}
+        aria-errormessage={ariaErrorAnchor}
       />
 
-      <Box>{helperText ? <InputHelperText text={helperText} variant={getHelperTextVariant()} /> : null}</Box>
+      <Box>
+        {helperText ? (
+          <InputHelperText id={ariaErrorAnchor} text={helperText} variant={getHelperTextVariant()} />
+        ) : null}
+      </Box>
     </Box>
   );
 };

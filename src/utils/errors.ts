@@ -1,6 +1,12 @@
 export function getErrorMessage(error: unknown, fallbackMessage: string): string {
-  console.log('error', error);
-  if (error instanceof Error) return error.message;
+  if (error instanceof Error) {
+    // TODO: better error handling needed!
+    if (error.message === 'Unauthorized') {
+      return 'Incorrect email or password';
+    }
+
+    return error.message;
+  }
 
   return String(error) || fallbackMessage;
 }

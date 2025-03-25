@@ -17,3 +17,5 @@ export interface ICommonButtonProps extends IReactChildrenBase {
 }
 
 export type DataVisualizationVariantsT = 'success' | 'error' | 'warning' | 'info';
+
+export type AriaRequiredAttrT = 'true' | 'false' | undefined;

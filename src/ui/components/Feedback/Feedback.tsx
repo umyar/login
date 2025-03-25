@@ -8,22 +8,24 @@ interface IFeedbackProps {
 }
 
 export const Feedback = ({ variant, text }: IFeedbackProps) => {
-  const getIcon = (type: IFeedbackProps['variant']) => {
+  const getIconAndClassName = (type: IFeedbackProps['variant']) => {
     switch (type) {
       case 'success':
-        return '✅';
+        return { icon: '✅', className: 'feedback success' };
       case 'error':
-        return '🚨';
+        return { icon: '🚨', className: 'feedback error' };
       case 'warning':
-        return '⚠️';
+        return { icon: '⚠️', className: 'feedback warning' };
       default:
-        return 'ℹ️';
+        return { icon: 'ℹ️', className: 'feedback info' };
     }
   };
 
+  const { icon, className } = getIconAndClassName(variant);
+
   return (
-    <div className="feedback">
-      <div>{getIcon(variant)}</div>
+    <div className={className}>
+      <div>{icon}</div>
       <div>{text}</div>
     </div>
   );

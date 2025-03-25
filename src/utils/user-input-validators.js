@@ -3,7 +3,7 @@ import { string } from 'yup';
 export const VALIDATORS = {
   email: string()
     .trim()
-    .email('Wrong email')
+    .email('Wrong email characters')
     .required('I mean... Put here something, huh? 🥲')
     .test('email validation', 'I do not believe that it is email... 🙃', (formValue) =>
       formValue ? formValue.match(/^[\x20-\x7F]+$/) : true

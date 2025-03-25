@@ -23,7 +23,7 @@ interface ILoginFormProps {
 
 export const LoginForm = ({ onForgotPasswordClick, onLoginSuccess, onSignUpClick }: ILoginFormProps) => {
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string>('');
+  const [error, setError] = useState<string | null>(null);
   const [showPassword, setShowPassword] = useState(false);
 
   const togglePasswordVisibility = () => {
@@ -33,9 +33,9 @@ export const LoginForm = ({ onForgotPasswordClick, onLoginSuccess, onSignUpClick
   const onSubmitCredentials = async (credentials: ICredentials) => {
     try {
       setIsLoading(true);
+      setError(null);
 
       const response = await httpClient<ICredentials, ISeverResponse>('/login', { method: 'post', body: credentials });
-      console.log('response', response);
 
       if (response.status === 'ok') {
         onLoginSuccess();
@@ -74,7 +74,9 @@ export const LoginForm = ({ onForgotPasswordClick, onLoginSuccess, onSignUpClick
                 <span>👋 Hey! Nice to see you again!</span>
               </Box>
 
-              <Box slotName="feedback">{error ? <Feedback variant="error" text={error} /> : null}</Box>
+              <Box slotName="feedback" style={{ justifyContent: 'center' }}>
+                {error ? <Feedback variant="error" text={error} /> : null}
+              </Box>
 
               <Box slotName="email">
                 <Field
@@ -84,6 +86,7 @@ export const LoginForm = ({ onForgotPasswordClick, onLoginSuccess, onSignUpClick
                   label="Email"
                   placeholder="Email"
                   as={Input}
+                  ariaRequired={true}
                   autoComplete="email"
                   error={Boolean(errors.email)}
                   helperText={errors.email}
@@ -100,6 +103,7 @@ export const LoginForm = ({ onForgotPasswordClick, onLoginSuccess, onSignUpClick
                   autoComplete="current-password"
                   type={showPassword ? 'text' : 'password'}
                   as={Input}
+                  ariaRequired={true}
                   error={Boolean(errors.password)}
                   helperText={errors.password}
                 />

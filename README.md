@@ -15,6 +15,8 @@ Key points:
 Quite a lot is not done yet... 😨
 
 - [ ] Responsive layout + mobile devices test (WIP)
+- [ ] a11y test: VoiceOver, TalkBack, NVDA
+- [ ] Required inputs improvement (`required` attr -> `aria-required`)
 - [ ] Feedback component implementation (server response)
 - [ ] Correct error messages handling (server response)
 - [ ] Decent disabled state for buttons and inputs...

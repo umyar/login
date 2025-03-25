@@ -2,5 +2,24 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  gap: 2rem;
+  padding: 0.25rem 0.5rem;
+  margin: 0.5rem;
+  border-radius: 0.25rem;
+  gap: 1rem;
+}
+
+.success {
+  background-color: rgba(123, 255, 116, 0.25);
+}
+
+.error {
+  background-color: rgba(255, 116, 123, 0.25);
+}
+
+.warning {
+  background-color: rgba(255, 248, 116, 0.25);
+}
+
+.info {
+  background-color: rgba(116, 123, 255, 0.25);
 }
