@@ -1,6 +1,6 @@
 import { ChangeEvent } from 'react';
 
-import { DataVisualizationVariantsT, AriaRequiredAttrT } from '../../types.ts';
+import { DataVisualizationVariantsT } from '../../types.ts';
 import { Box } from '../Box/Box.tsx';
 
 import './input.css';
@@ -68,8 +68,6 @@ export const Input = ({
     onChange(e);
   };
 
-  const ariaRequiredValue = (ariaRequired ? String(ariaRequired) : undefined) as AriaRequiredAttrT;
-  const ariaInvalid = error ? String(error) : undefined;
   const ariaErrorAnchor = `${name}-aria-err`;
 
   return (
@@ -81,8 +79,8 @@ export const Input = ({
         name={name}
         disabled={Boolean(disabled)}
         placeholder={placeholder}
-        aria-required={ariaRequiredValue}
-        aria-invalid={ariaInvalid}
+        aria-required={ariaRequired ? 'true' : 'false'}
+        aria-invalid={error ? 'true' : 'false'}
         aria-errormessage={ariaErrorAnchor}
       />
 
