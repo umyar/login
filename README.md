@@ -11,10 +11,12 @@ Key points:
 
 <br>
 Valid credentials:
+
 | Email          | Password         |
-|----------------|------------------|
+| -------------- | ---------------- |
 | mail@mail.mail | iuliia_bomb!     |
 | box@box.box    | in_god_we_trust? |
+
 <br>
 
 <a href="https://login-three-drab.vercel.app/" style="padding:10px 15px; background-color:green; color:white; border:none; border-radius:5px; text-decoration:none;">
