@@ -10,6 +10,12 @@ Key points:
 4. I've created a separate [section with UI elements](https://github.com/umyar/login/tree/master/src/ui) (good step towards the separate ui-package).
 
 <br>
+Valid credentials:
+| Email          | Password         |
+|----------------|------------------|
+| mail@mail.mail | iuliia_bomb!     |
+| box@box.box    | in_god_we_trust? |
+<br>
 
 <a href="https://login-three-drab.vercel.app/" style="padding:10px 15px; background-color:green; color:white; border:none; border-radius:5px; text-decoration:none;">
   go to login page
