@@ -18,11 +18,6 @@ export function httpClient<B, R>(url: string, options?: IHttpClientOptions<B>): 
       'Content-Type': 'application/json',
     },
   }).then((response) => {
-    if (!response.ok) {
-      // TODO: better error handling
-      throw new Error(response.statusText);
-    }
-
     return response.json() as Promise<R>;
   });
 }
