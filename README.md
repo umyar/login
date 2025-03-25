@@ -28,11 +28,12 @@ Valid credentials:
 Quite a lot is not done yet... 😨
 
 - [ ] Responsive layout + mobile devices test (WIP)
+- [ ] Dark theme handling
 - [ ] Test in the different browsers (not Chrome only...)
 - [ ] a11y test: VoiceOver, TalkBack, NVDA
 - [ ] Required inputs improvement (`required` attr -> `aria-required`)
-- [ ] Feedback component implementation (server response)
-- [ ] Correct error messages handling (server response)
+- [x] Feedback component implementation (server response)
+- [x] Correct error messages handling (server response)
 - [ ] Decent disabled state for buttons and inputs...
 - [ ] Flexbox stuff from style to CSS (`justify-content,` `align-items`...)
 - [ ] Animations for the buttons loading state
