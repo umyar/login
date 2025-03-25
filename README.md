@@ -4,17 +4,23 @@ Just a login page on React. You can find out my front-end skills here. 🙂
 
 Key points:
 
-1. Dummy BE is also implemented by me. Just checking a couple of hardcoded email-password pairs.
+1. [Dummy BE](https://github.com/umyar/be-autocomplete/blob/master/src/routes/login.ts) is also implemented by me. Just checking a couple of hardcoded email-password pairs.
 2. This app is just a login page. In root. No any other pages.
-3. Work is still in progress. Ideal state is not achievable...
+3. Work is still [in progress](https://github.com/umyar/login/tree/master?tab=readme-ov-file#todo). Ideal state is not achievable...
+4. I've created a separate [section with UI elements](https://github.com/umyar/login/tree/master/src/ui) (good step towards the separate ui-package).
 
-[PAGE IS HERE 🔗](https://login-three-drab.vercel.app/)
+<br>
+
+<a href="https://login-three-drab.vercel.app/" style="padding:10px 15px; background-color:green; color:white; border:none; border-radius:5px; text-decoration:none;">
+  go to login page
+</a>
 
 ## TODO:
 
 Quite a lot is not done yet... 😨
 
 - [ ] Responsive layout + mobile devices test (WIP)
+- [ ] Test in the different browsers (not Chrome only...)
 - [ ] a11y test: VoiceOver, TalkBack, NVDA
 - [ ] Required inputs improvement (`required` attr -> `aria-required`)
 - [ ] Feedback component implementation (server response)
