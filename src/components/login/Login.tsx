@@ -83,6 +83,7 @@ export const LoginForm = ({ onForgotPasswordClick, onLoginSuccess, onSignUpClick
                   value={values.email}
                   onChange={handleChange}
                   name="email"
+                  type="email"
                   label="Email"
                   placeholder="Email"
                   as={Input}
