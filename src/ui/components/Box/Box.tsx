@@ -1,7 +1,7 @@
 import { CSSProperties } from 'react';
 import { IReactChildrenBase } from '../../types.ts';
 
-import './box.css';
+import styles from './box.module.css';
 
 export interface IBoxProps extends IReactChildrenBase {
   direction?: 'row' | 'column';
@@ -17,9 +17,9 @@ export const Box = ({ children, direction, gap = 0, slotName, style = {} }: IBox
     let className = '';
 
     if (direction === 'column') {
-      className = 'box-vertical';
+      className = styles.boxVertical;
     } else {
-      className = 'box-horizontal';
+      className = styles.boxHorizontal;
     }
 
     return className;

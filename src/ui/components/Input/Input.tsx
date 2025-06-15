@@ -1,9 +1,9 @@
 import { ChangeEvent } from 'react';
 
 import { DataVisualizationVariantsT } from '../../types.ts';
-import { Box } from '../Box/Box.tsx';
+import { Box } from '@/ui';
 
-import './input.css';
+import styles from './input.module.css';
 
 interface IInputHelperText {
   text: string;
@@ -15,13 +15,13 @@ export const InputHelperText = ({ text, variant, id }: IInputHelperText) => {
   const getTipClassName = (variant: IInputHelperText['variant']) => {
     switch (variant) {
       case 'success':
-        return 'input-helper-success';
+        return styles.inputHelperSuccess;
       case 'error':
-        return 'input-helper-error';
+        return styles.inputHelperError;
       case 'warning':
-        return 'input-helper-warning';
+        return styles.inputHelperWarning;
       default:
-        return 'input-helper-info';
+        return styles.inputHelperInfo;
     }
   };
 
@@ -82,6 +82,7 @@ export const Input = ({
         aria-required={ariaRequired ? 'true' : 'false'}
         aria-invalid={error ? 'true' : 'false'}
         aria-errormessage={ariaErrorAnchor}
+        className={styles.textInput}
       />
 
       <Box>

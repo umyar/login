@@ -1,4 +1,6 @@
-button {
+/* TODO: think on global styles for buttons (maybe just a button selector instead of btn className?) */
+
+.btn {
   width: 100%;
   border-radius: 8px;
   border: 1px solid transparent;
@@ -13,12 +15,12 @@ button {
     box-shadow 0.25s;
 }
 
-button:hover {
+.btn:hover {
   border-color: #646cff;
 }
 
-button:focus,
-button:focus-visible {
+.btn:focus,
+.btn:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
@@ -36,13 +38,3 @@ button:focus-visible {
 /*    animation: loading-spinner infinite 20s linear;*/
 /*  }*/
 /*}*/
-
-@media (prefers-color-scheme: light) {
-  button {
-    background-color: #f9f9f9;
-  }
-
-  button.primary {
-    background-color: #646cff;
-  }
-}

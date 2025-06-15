@@ -1,6 +1,6 @@
 import { DataVisualizationVariantsT } from '../../types.ts';
 
-import './feedback.css';
+import styles from './feedback.module.css';
 
 interface IFeedbackProps {
   variant: DataVisualizationVariantsT;
@@ -11,13 +11,13 @@ export const Feedback = ({ variant, text }: IFeedbackProps) => {
   const getIconAndClassName = (type: IFeedbackProps['variant']) => {
     switch (type) {
       case 'success':
-        return { icon: '✅', className: 'feedback success' };
+        return { icon: '✅', className: `${styles.feedback} ${styles.success}` };
       case 'error':
-        return { icon: '🚨', className: 'feedback error' };
+        return { icon: '🚨', className: `${styles.feedback} ${styles.error}` };
       case 'warning':
-        return { icon: '⚠️', className: 'feedback warning' };
+        return { icon: '⚠️', className: `${styles.feedback} ${styles.warning}` };
       default:
-        return { icon: 'ℹ️', className: 'feedback info' };
+        return { icon: 'ℹ️', className: `${styles.feedback} ${styles.info}` };
     }
   };
 
