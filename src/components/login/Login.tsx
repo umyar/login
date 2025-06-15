@@ -2,13 +2,12 @@ import { ReactNode, useState } from 'react';
 import { Field, Form, Formik, FormikProps } from 'formik';
 import * as Yup from 'yup';
 
-// TODO: alias for ui directory
-import { Box, Button, Feedback, Input, LoginFormLayout } from '../../ui';
-import { getErrorMessage } from '../../utils/errors.ts';
+import { Box, Button, Feedback, Input, LoginFormLayout } from '@/ui';
+import { getErrorMessage } from '@/utils/errors';
 
-import { httpClient } from '../../utils/http-client.ts';
-import { ISeverResponse } from '../../types.ts';
-import { VALIDATORS } from '../../utils/user-input-validators';
+import { httpClient } from '@/utils/http-client.ts';
+import { ISeverResponse } from '@/types.ts';
+import { VALIDATORS } from '@/utils/user-input-validators';
 
 interface ICredentials {
   email: string;
