@@ -1,31 +1,31 @@
-button.secondary {
+.secondary {
   border: 1px solid transparent;
   background-color: #1a1a1a;
   color: #ffffff;
 }
 
-button.secondary:hover {
+.secondary:hover {
   border-color: #646cff;
 }
 
-button.secondary:focus,
-button.secondary:focus-visible {
+.secondary:focus,
+.secondary:focus-visible {
   outline: none;
   box-shadow: 0 0 0 4px rgba(100, 108, 255, 0.5);
 }
 
 @media (prefers-color-scheme: light) {
-  button.secondary {
+  .secondary {
     background-color: #f9f9f9;
     color: #213547;
   }
 
-  button.secondary:hover {
+  .secondary:hover {
     border-color: #646cff;
   }
 
-  button.secondary:focus,
-  button.secondary:focus-visible {
+  .secondary:focus,
+  .secondary:focus-visible {
     box-shadow: 0 0 0 4px rgba(100, 108, 255, 0.5);
   }
 }

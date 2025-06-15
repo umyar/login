@@ -28,7 +28,7 @@ Valid credentials:
 Quite a lot is not done yet... 😨
 
 - [ ] Responsive layout + mobile devices test (WIP)
-- [ ] CSS styles encapsulation (get rid of global styles)
+- [x] CSS styles encapsulation (get rid of global styles)
 - [ ] Dark theme handling
 - [ ] Test in the different browsers (not Chrome only...)
 - [ ] a11y test: VoiceOver, TalkBack, NVDA
@@ -40,9 +40,8 @@ Quite a lot is not done yet... 😨
 - [ ] Animations for the buttons loading state
 - [ ] Password visibility toggle button upgrade (inside the input & shown only when needed)
 - [ ] LinkButton component needed (for `I forgot my password` and `Sign up`)
-- [ ] I want some flat and cozy background for the Login form
-- [ ] Some fancy libs for CSS (but I'm ok with pure CSS so far 😎)
 - [ ] Components rendering optimizations
+- [ ] Storybook for ui section
 - [ ] UI section clean-up
   - [ ] three-shaking
   - [ ] separate chunk

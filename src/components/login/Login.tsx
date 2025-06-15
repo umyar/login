@@ -66,7 +66,7 @@ export const LoginForm = ({ onForgotPasswordClick, onLoginSuccess, onSignUpClick
     >
       {({ values, errors, handleChange, isSubmitting }: FormikProps<ICredentials>) =>
         (
-          <Form>
+          <Form noValidate>
             <LoginFormLayout>
               <Box slotName="hey" style={{ justifyContent: 'end' }}>
                 <h1 className="visually-hidden">Login form</h1>

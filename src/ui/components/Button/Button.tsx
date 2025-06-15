@@ -1,9 +1,10 @@
 import { ICommonButtonProps } from '../../types.ts';
 
-import './base.css';
-import './primary.css';
-import './secondary.css';
-import './outline.css';
+import './button-base.css';
+
+import primaryStyles from './primary.module.css';
+import secondaryStyles from './secondary.module.css';
+import outlineStyles from './outline.module.css';
 
 interface IButtonProps extends Omit<ICommonButtonProps, 'onClick'> {
   onClick?: () => void;
@@ -13,11 +14,11 @@ export const Button = ({ children, onClick, disabled, loading, type, variant }: 
   const getBtnClassName = (variant: ICommonButtonProps['variant']) => {
     switch (variant) {
       case 'secondary':
-        return 'secondary';
+        return `btn ${secondaryStyles.secondary}`;
       case 'outline':
-        return 'outline';
+        return `btn ${outlineStyles.outline}`;
       default:
-        return 'primary';
+        return `btn ${primaryStyles.primary}`;
     }
   };
 
